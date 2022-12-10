@@ -5,32 +5,6 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
-
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
-
-  # Setup keyfile
-  boot.initrd.secrets = {
-    "/crypto_keyfile.bin" = null;
-  };
-
-  # Enable swap on luks
-  boot.initrd.luks.devices."luks-ce704920-afd3-4212-a40a-322b78711b09".device = "/dev/disk/by-uuid/ce704920-afd3-4212-a40a-322b78711b09";
-  boot.initrd.luks.devices."luks-ce704920-afd3-4212-a40a-322b78711b09".keyFile = "/crypto_keyfile.bin";
-
-  networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
   # Enable networking
   networking.networkmanager.enable = true;
 
@@ -52,12 +26,6 @@
     LC_TIME = "de_DE.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
@@ -97,10 +65,6 @@
     description = "neosam";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      firefox
-      git
-      neovim
-    #  thunderbird
     ];
   };
 
@@ -114,7 +78,20 @@
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
+    git
+    wget
+    htop
+    neovim
+    helix
+    usbutils
+    pciutils
+    killall
   ];
+
+  environment.variables = {
+    EDITOR = "hx";
+    VISUAL = "hx";
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

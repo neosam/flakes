@@ -18,20 +18,11 @@
       };
       lib = nixpkgs.lib;
     in {
-      nixosConfigurations = {
-        framework = lib.nixosSystem {
-          inherit system;
-          modules = [ 
-            ./configuration.nix
-            home-manager.nixosModules.home-manager {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.neosam = {
-                imports = [ ./home.nix ];
-              };
-            }
-          ];
-        };
-      };
+      nixosConfigurations = (
+        import ./hosts {
+          inherit (nixpkgs) lib;
+          inherit system home-manager;
+        } 
+      );
     };
 }
