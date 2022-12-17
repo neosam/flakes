@@ -12,6 +12,7 @@
     git-town 
     firefox
     vscode
+    crate2nix
   ];
 
   home.stateVersion = "22.11";
