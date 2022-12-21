@@ -97,7 +97,7 @@
   security.pam.yubico = {
     enable = true;
     id = "yubico";
-    debug = true;
+    # debug = true;
     mode = "challenge-response";
   };
 
