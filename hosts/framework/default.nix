@@ -24,7 +24,7 @@
   boot.initrd.luks.devices."luks-ce704920-afd3-4212-a40a-322b78711b09".device = "/dev/disk/by-uuid/ce704920-afd3-4212-a40a-322b78711b09";
   boot.initrd.luks.devices."luks-ce704920-afd3-4212-a40a-322b78711b09".keyFile = "/crypto_keyfile.bin";
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "framework"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
