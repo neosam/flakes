@@ -86,6 +86,7 @@
     usbutils
     pciutils
     killall
+    du-dust
   ];
 
   environment.variables = {
