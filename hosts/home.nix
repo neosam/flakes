@@ -13,6 +13,7 @@
     firefox
     vscode
     crate2nix
+    signal-desktop
   ];
 
   home.stateVersion = "22.11";
