@@ -14,6 +14,8 @@
     vscode
     crate2nix
     signal-desktop
+    superTux
+    superTuxKart
   ];
 
   home.stateVersion = "22.11";
