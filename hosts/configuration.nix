@@ -62,10 +62,18 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.neosam = {
     isNormalUser = true;
+    shell = pkgs.zsh;
     description = "neosam";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
     ];
+  };
+
+  programs.zsh.enable = true;
+  programs.zsh.ohMyZsh = {
+    enable = true;
+    plugins = ["git" "sudo" "rust"];
+    theme = "robbyrussell";
   };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
