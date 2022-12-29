@@ -7,10 +7,23 @@
   outputs = { self, nixpkgs, flake-utils }: 
     flake-utils.lib.eachDefaultSystem
     (system:
-      let pkgs = nixpkgs.legacyPackages.${system}; in
+      let pkgs = nixpkgs.legacyPackages.${system};
+          buildInputs = with pkgs; [
+            cargo rustc rust-analyzer
+            udev alsa-lib vulkan-loader
+            xlibsWrapper xorg.libXcursor xorg.libXrandr xorg.libXi # To use x11 feature
+            libxkbcommon wayland # To use wayland feature
+          ];
+      in
       {
         devShells.default = pkgs.mkShell {
-          buildInputs = with pkgs; [cargo rustc rust-analyzer];
+          nativeBuildInputs = with pkgs; [
+            pkg-config
+            llvmPackages.bintools # To use lld linker
+            python3
+          ];
+          inherit buildInputs;
+          LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath buildInputs;
         };
       }
     );
