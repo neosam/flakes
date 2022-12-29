@@ -1,0 +1,6 @@
+. /etc/static/zshrc
+
+export PATH=$PATH:$HOME/flakes/shells/bin
+if (( ${+CURRENT_NIX_ENVIRONMENT} )); then
+  export PROMPT="($CURRENT_NIX_ENVIRONMENT) $PROMPT"
+fi
