@@ -11,6 +11,7 @@
     helix 
     git-town 
     crate2nix
+    du-dust
   ];
 
   home.stateVersion = "22.11";
