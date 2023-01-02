@@ -24,5 +24,10 @@
           inherit system home-manager;
         } 
       );
+      homeConfigurations = (
+         import ./hosts {
+            inherit nixpkgs lib system home-manager;
+          }
+      );
     };
 }
