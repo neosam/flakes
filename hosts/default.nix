@@ -16,6 +16,22 @@
       }
     ];
   };
+  wsl = lib.nixosSystem {
+    inherit system;
+    modules = [ 
+      ./wsl
+      ./configuration.nix
+      
+      home-manager.nixosModules.home-manager {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.users.neosam = {
+          imports = [ ./home.nix ./home-desktop.nix ];
+        };
+      }
+    ];
+  };
+
   macbook = 
     let
       pkgs = import nixpkgs {

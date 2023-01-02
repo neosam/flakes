@@ -7,5 +7,6 @@
     signal-desktop
     superTux
     superTuxKart
+    google-chrome
   ];
 }
