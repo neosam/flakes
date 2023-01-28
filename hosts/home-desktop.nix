@@ -8,5 +8,6 @@
     superTux
     superTuxKart
     google-chrome
+    _1password-gui
   ];
 }
