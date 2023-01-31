@@ -11,7 +11,7 @@
           rustInputs = with pkgs; [cargo rustc rust-analyzer];
           linuxInputs = with pkgs; [
             udev alsa-lib vulkan-loader
-            xlibsWrapper xorg.libXcursor xorg.libXrandr xorg.libXi # To use x11 feature
+            xorg.libX11 xorg.libXcursor xorg.libXrandr xorg.libXi # To use x11 feature
             libxkbcommon wayland # To use wayland feature
           ];
           # From here: https://github.com/NixOS/nixpkgs/blob/master/pkgs/os-specific/darwin/apple-sdk/frameworks.nix

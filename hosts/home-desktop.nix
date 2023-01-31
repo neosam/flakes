@@ -9,5 +9,6 @@
     superTuxKart
     google-chrome
     _1password-gui
+    element-desktop
   ];
 }
